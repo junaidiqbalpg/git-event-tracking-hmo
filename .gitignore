@@ -1,3 +1,10 @@
 /GitEventTrackingApi/.vs/
 /GitEventTrackingApi/GitEventTrackingApi/bin/
 /GitEventTrackingApi/GitEventTrackingApi/obj/
+/GitEventTrackingApi/GitEventTrackingApi.Data/bin/Debug/netcoreapp3.1
+/GitEventTrackingApi/GitEventTrackingApi.Data/obj/Debug/netcoreapp3.1
+/GitEventTrackingApi/GitEventTrackingApi.Data/obj
+/GitEventTrackingApi/GitEventTrackingApi.Service/bin/Debug/netcoreapp3.1
+/GitEventTrackingApi/GitEventTrackingApi.Service/obj/Debug/netcoreapp3.1
+netcoreapp3.1
+obj

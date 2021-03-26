@@ -11,5 +11,11 @@ namespace GitEventTrackingApi.Controllers
     [ApiController]
     public class EventController : ControllerBase
     {
+        [HttpPost]
+        [Route("AddNewEvent")]
+        public IActionResult AddNewEvent()
+        {
+            return Ok();
+        }
     }
 }

@@ -18,7 +18,7 @@ namespace GitEventTrackingApi.Test.Services
         }
 
         [Test]
-        public void ReturnEventBusinessModelForAddGitEvent()
+        public void ReturnActorBusinessModelForAddGitEvent()
         {
             //Arrange
             List<ActorBusinessModel> actorBusinessModels = new List<ActorBusinessModel>();

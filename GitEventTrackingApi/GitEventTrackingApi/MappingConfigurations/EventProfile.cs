@@ -3,10 +3,6 @@ using GitEventTrackingApi.Data.Domain;
 using GitEventTrackingApi.Service.BindingModel;
 using GitEventTrackingApi.Service.BusinessModel;
 using GitEventTrackingApi.ViewModel;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace GitEventTrackingApi.MappingConfigurations
 {

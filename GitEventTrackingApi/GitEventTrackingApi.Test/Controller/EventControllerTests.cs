@@ -3,13 +3,9 @@ using GitEventTrackingApi.Controllers;
 using GitEventTrackingApi.Service.BindingModel;
 using GitEventTrackingApi.Service.BusinessModel;
 using GitEventTrackingApi.Service.Services;
-using GitEventTrackingApi.ViewModel;
 using Microsoft.AspNetCore.Mvc;
 using Moq;
 using NUnit.Framework;
-using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace GitEventTrackingApi.Test.Controller
 {

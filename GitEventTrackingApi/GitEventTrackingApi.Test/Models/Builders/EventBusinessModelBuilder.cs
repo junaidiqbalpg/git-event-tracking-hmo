@@ -1,8 +1,6 @@
 ﻿using GitEventTrackingApi.Data.Domain;
 using GitEventTrackingApi.Service.BusinessModel;
 using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace GitEventTrackingApi.Test.Models.Builders
 {

@@ -2,7 +2,6 @@
 using GitEventTrackingApi.Data;
 using GitEventTrackingApi.Data.Domain;
 using GitEventTrackingApi.Data.Repository;
-using GitEventTrackingApi.Service.BusinessModel;
 using GitEventTrackingApi.Service.Services;
 using GitEventTrackingApi.Test.Helper;
 using GitEventTrackingApi.Test.Models.Builders;
@@ -10,8 +9,6 @@ using Microsoft.Extensions.Logging;
 using Moq;
 using NUnit.Framework;
 using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace GitEventTrackingApi.Test.Services
 {

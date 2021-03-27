@@ -5,8 +5,6 @@ using GitEventTrackingApi.Service.BusinessModel;
 using GitEventTrackingApi.Service.Helpers;
 using Microsoft.Extensions.Logging;
 using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace GitEventTrackingApi.Service.Services
 {

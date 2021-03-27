@@ -2,11 +2,9 @@
 using GitEventTrackingApi.Data.Domain;
 using GitEventTrackingApi.Data.Repository;
 using GitEventTrackingApi.Service.BusinessModel;
-using Microsoft.Extensions.Logging;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 
 namespace GitEventTrackingApi.Service.Services
 {

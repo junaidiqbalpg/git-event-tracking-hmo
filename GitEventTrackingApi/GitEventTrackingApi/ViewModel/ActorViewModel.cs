@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-
-namespace GitEventTrackingApi.ViewModel
+﻿namespace GitEventTrackingApi.ViewModel
 {
     public class ActorViewModel
     {

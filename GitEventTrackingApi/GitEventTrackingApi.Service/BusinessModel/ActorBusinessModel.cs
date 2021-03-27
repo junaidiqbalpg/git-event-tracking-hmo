@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace GitEventTrackingApi.Service.BusinessModel
+﻿namespace GitEventTrackingApi.Service.BusinessModel
 {
     public class ActorBusinessModel
     {

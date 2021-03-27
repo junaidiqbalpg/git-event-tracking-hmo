@@ -29,6 +29,7 @@ namespace GitEventTrackingApi
             services.AddTransient<IEventRespository, EventRespository>();
 
             services.AddTransient<IActorService, ActorService>();
+            services.AddTransient<IActorRepository, ActorRepository>();
 
             services.AddAutoMapper(typeof(Startup));
             services.AddLogging(config =>

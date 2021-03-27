@@ -13,6 +13,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
 using Microsoft.EntityFrameworkCore;
+using GitEventTrackingApi.Service.Services;
 
 namespace GitEventTrackingApi
 {
@@ -31,6 +32,9 @@ namespace GitEventTrackingApi
             services.AddControllers();
 
             services.AddDbContext<GitEventTrackingContext>(op => op.UseInMemoryDatabase("GitEventTracking"));
+            services.AddTransient<IEventService, EventService>();
+
+
             services.AddAutoMapper(typeof(Startup));
             services.AddLogging(config =>
             {

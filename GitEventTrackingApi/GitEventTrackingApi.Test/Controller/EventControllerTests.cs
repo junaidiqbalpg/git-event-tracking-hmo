@@ -13,7 +13,7 @@ using System.Text;
 
 namespace GitEventTrackingApi.Test.Controller
 {
-    public class EventControllerTest
+    public class EventControllerTests
     {
         private EventController _eventController;
         private EventBindingModel _eventBindingModel;

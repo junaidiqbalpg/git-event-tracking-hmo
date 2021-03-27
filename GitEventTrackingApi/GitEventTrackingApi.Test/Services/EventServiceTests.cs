@@ -87,6 +87,12 @@ namespace GitEventTrackingApi.Test.Services
         [Test]
         public void ReturnValidationExceptionWhenDuplicateGitEventAdded()
         {
+            //Arrange
+            var _eventBusinessModel = new EventBusinessModelBuilder()
+                .WithActor(_actor)
+                .WithRepo(_repo)
+                .Build();
+
             //Act
             var result = _eventServiceWithoutMoq.AddGitEvent(_eventBusinessModel);
 

@@ -10,8 +10,10 @@ namespace GitEventTrackingApi.Test.Models.Builders
     {
         private Int64 _id = 123456;
         private string _type = "EventType";
-        private Actor _actor = new Actor();
-        private Repo _repo = new Repo();
+        private Actor _actor;
+        private int _actorId = 1;
+        private Repo _repo;
+        private int _repoId = 1;
         private DateTime _createdAt = DateTime.Now;
         public EventBusinessModel Build()
         {
@@ -20,7 +22,9 @@ namespace GitEventTrackingApi.Test.Models.Builders
                 id = _id,
                 type = _type,
                 actor = _actor,
+                actorId = _actorId,
                 repo = _repo,
+                repoId = _repoId,
                 created_at = _createdAt
             };
         }
@@ -43,9 +47,21 @@ namespace GitEventTrackingApi.Test.Models.Builders
             return this;
         }
 
+        public EventBusinessModelBuilder WithActorId(int id)
+        {
+            _actorId = id;
+            return this;
+        }
+
         public EventBusinessModelBuilder WithRepo(Repo repo)
         {
             _repo = repo;
+            return this;
+        }
+
+        public EventBusinessModelBuilder WithRepoId(int id)
+        {
+            _repoId = id;
             return this;
         }
 

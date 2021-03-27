@@ -30,7 +30,7 @@ namespace GitEventTrackingApi.Service.Services
                 var _event = _mapper.Map<Event>(eventBusinessModel);
                 return _mapper.Map<EventBusinessModel>(_eventRespository.AddEvent(_event));
             }
-            catch
+            catch (Exception e)
             {
                 ExceptionHelper.ThrowAndLogValidationException(_logger, "Event with same name cannot be added.");
                 return null;

@@ -9,6 +9,8 @@
   </ItemGroup>
 
   <ItemGroup>
+    <PackageReference Include="AutoMapper" Version="10.1.1" />
+    <PackageReference Include="AutoMapper.Extensions.Microsoft.DependencyInjection" Version="8.1.1" />
     <PackageReference Include="Microsoft.AspNetCore.App" />
     <PackageReference Include="Microsoft.AspNetCore.Razor.Design" Version="2.1.2" PrivateAssets="All" />
     <PackageReference Include="Microsoft.EntityFrameworkCore" Version="5.0.4" />
@@ -19,6 +21,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\GitEventTrackingApi.Data\GitEventTrackingApi.Data.csproj" />
+    <ProjectReference Include="..\GitEventTrackingApi.Service\GitEventTrackingApi.Service.csproj" />
   </ItemGroup>
 
 </Project>

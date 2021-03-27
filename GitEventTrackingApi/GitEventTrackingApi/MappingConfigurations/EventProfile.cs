@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using GitEventTrackingApi.Data.Domain;
 using GitEventTrackingApi.Service.BindingModel;
 using GitEventTrackingApi.Service.BusinessModel;
 using System;
@@ -13,6 +14,8 @@ namespace GitEventTrackingApi.MappingConfigurations
         public EventProfile()
         {
             CreateMap<EventBindingModel, EventBusinessModel>();
+            CreateMap<EventBusinessModel, Event>();
+            CreateMap<Event, EventBusinessModel>();
         }
     }
 }

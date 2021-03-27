@@ -1,19 +1,12 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using AutoMapper;
-using GitEventTrackingApi.Data;
+﻿using GitEventTrackingApi.Data;
+using GitEventTrackingApi.Data.Repository;
+using GitEventTrackingApi.Service.Services;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.HttpsPolicy;
-using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
-using Microsoft.Extensions.Options;
-using Microsoft.EntityFrameworkCore;
-using GitEventTrackingApi.Service.Services;
 
 namespace GitEventTrackingApi
 {
@@ -33,6 +26,7 @@ namespace GitEventTrackingApi
 
             services.AddDbContext<GitEventTrackingContext>(op => op.UseInMemoryDatabase("GitEventTracking"));
             services.AddTransient<IEventService, EventService>();
+            services.AddTransient<IEventRespository, EventRespository>();
 
 
             services.AddAutoMapper(typeof(Startup));

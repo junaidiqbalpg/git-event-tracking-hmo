@@ -22,6 +22,13 @@ namespace GitEventTrackingApi.Data
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);
+
+            modelBuilder.Entity<Event>()
+                .HasKey(ipa => ipa.id);
+
+            modelBuilder.Entity<Event>()
+                .HasIndex(ipa => ipa.id)
+                .IsUnique();
         }
     }
 }

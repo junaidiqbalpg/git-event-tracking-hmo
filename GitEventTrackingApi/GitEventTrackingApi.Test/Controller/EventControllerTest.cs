@@ -3,6 +3,7 @@ using GitEventTrackingApi.Controllers;
 using GitEventTrackingApi.Service.BindingModel;
 using GitEventTrackingApi.Service.BusinessModel;
 using GitEventTrackingApi.Service.Services;
+using GitEventTrackingApi.ViewModel;
 using Microsoft.AspNetCore.Mvc;
 using Moq;
 using NUnit.Framework;
@@ -35,13 +36,11 @@ namespace GitEventTrackingApi.Test.Controller
         }
 
         [Test]
-        public void ShouldReturnA200OkResult()
+        public void ShouldReturnA201CreateResult()
         {
-            //Arrange
-            Int64 expectedEventId = 1234567;
 
-            _mockEventService.Setup(eventService => eventService.AddGitEvent(_eventBusinessModel))
-                .Returns(expectedEventId);
+            _mockEventService.Setup(eventService => eventService.AddGitEvent(It.IsAny<EventBusinessModel>()))
+                .Returns(_eventBusinessModel);
 
             //Act
             var result = _eventController.AddNewEvent(_eventBindingModel);

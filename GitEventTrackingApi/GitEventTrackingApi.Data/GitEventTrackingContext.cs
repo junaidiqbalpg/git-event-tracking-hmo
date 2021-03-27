@@ -29,6 +29,12 @@ namespace GitEventTrackingApi.Data
             modelBuilder.Entity<Event>()
                 .HasIndex(ipa => ipa.id)
                 .IsUnique();
+
+            modelBuilder.Entity<Event>()
+                .HasOne(ipa => ipa.actor);
+
+            modelBuilder.Entity<Event>()
+                .HasOne(ipa => ipa.repo);
         }
     }
 }

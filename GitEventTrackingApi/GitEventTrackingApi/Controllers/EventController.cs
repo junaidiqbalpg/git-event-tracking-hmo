@@ -6,6 +6,7 @@ using AutoMapper;
 using GitEventTrackingApi.Service.BindingModel;
 using GitEventTrackingApi.Service.BusinessModel;
 using GitEventTrackingApi.Service.Services;
+using GitEventTrackingApi.ViewModel;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
@@ -32,7 +33,7 @@ namespace GitEventTrackingApi.Controllers
             {
                 var result =  _eventService.AddGitEvent(_mapper.Map<EventBusinessModel>(eventBindingModel));
 
-                return CreatedAtAction(nameof(AddNewEvent), new { eventId = result });
+                return CreatedAtAction(nameof(AddNewEvent), new { eventId = result.id }, _mapper.Map<EventViewModel>(result));
             }
             catch (InvalidOperationException e)
             {

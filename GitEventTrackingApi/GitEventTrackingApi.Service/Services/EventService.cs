@@ -2,6 +2,7 @@
 using GitEventTrackingApi.Data.Domain;
 using GitEventTrackingApi.Data.Repository;
 using GitEventTrackingApi.Service.BusinessModel;
+using GitEventTrackingApi.Service.Helpers;
 using Microsoft.Extensions.Logging;
 using System;
 using System.Collections.Generic;
@@ -24,9 +25,16 @@ namespace GitEventTrackingApi.Service.Services
 
         public EventBusinessModel AddGitEvent(EventBusinessModel eventBusinessModel)
         {
-            var _event = _mapper.Map<Event>(eventBusinessModel);
-            var test = _eventRespository.AddEvent(_event);
-            return _mapper.Map<EventBusinessModel>(_eventRespository.AddEvent(_event));
+            try
+            {
+                var _event = _mapper.Map<Event>(eventBusinessModel);
+                return _mapper.Map<EventBusinessModel>(_eventRespository.AddEvent(_event));
+            }
+            catch
+            {
+                ExceptionHelper.ThrowAndLogValidationException(_logger, "Event with same name cannot be added.");
+                return null;
+            }
         }
     }
 }

@@ -1,14 +1,17 @@
 ﻿using AutoMapper;
+using GitEventTrackingApi.Data;
 using GitEventTrackingApi.Data.Domain;
 using GitEventTrackingApi.Data.Repository;
 using GitEventTrackingApi.Service.BusinessModel;
 using GitEventTrackingApi.Service.Services;
+using GitEventTrackingApi.Test.Helper;
 using GitEventTrackingApi.Test.Models.Builders;
 using Microsoft.Extensions.Logging;
 using Moq;
 using NUnit.Framework;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Text;
 
 namespace GitEventTrackingApi.Test.Services
@@ -16,15 +19,22 @@ namespace GitEventTrackingApi.Test.Services
     public class EventServiceTests
     {
         private EventService _eventService;
+        private EventService _eventServiceWithoutMoq;
+
         private EventBusinessModel _eventBusinessModel;
 
         private Mock<IEventRespository> _mockEventRespository;
+        private EventRespository _eventRespository;
+
         private IMapper _mapper;
         private Mock<ILogger<EventService>> _eventServiceLogger;
+        private Mock<ILogger<EventRespository>> _eventRespositoryLogger;
 
         private Event _event;
         private Actor _actor;
         private Repo _repo;
+
+        private GitEventTrackingContext _context = new SqliteDbContext().CreateContext();
 
         [SetUp]
         public void Init()
@@ -33,12 +43,16 @@ namespace GitEventTrackingApi.Test.Services
             _mapper = config.CreateMapper();
 
             _mockEventRespository = new Mock<IEventRespository>();
+            _eventRespositoryLogger = new Mock<ILogger<EventRespository>>();
+            
+            _eventRespository = new EventRespository(_context, _eventRespositoryLogger.Object);
             _eventServiceLogger = new Mock<ILogger<EventService>>();
 
             _eventService = new EventService(_mockEventRespository.Object,
                 _mapper, _eventServiceLogger.Object);
-            
-            _eventBusinessModel = new EventBusinessModel();
+
+            _eventServiceWithoutMoq = new EventService(_eventRespository,
+                _mapper, _eventServiceLogger.Object);
 
             _actor = new ActorBuilder()
                 .Build();
@@ -49,6 +63,9 @@ namespace GitEventTrackingApi.Test.Services
             _event = new EventBuilder()
                 .WithActor(_actor)
                 .WithRepo(_repo)
+                .Build();
+
+            _eventBusinessModel = new EventBusinessModelBuilder()
                 .Build();
         }
 
@@ -65,6 +82,16 @@ namespace GitEventTrackingApi.Test.Services
 
             //Assert
             Assert.That(result.id, Is.EqualTo(expectedId));
+        }
+
+        [Test]
+        public void ReturnValidationExceptionWhenDuplicateGitEventAdded()
+        {
+            //Act
+            var result = _eventServiceWithoutMoq.AddGitEvent(_eventBusinessModel);
+
+            //Add same Git Event again which result in valiation exception
+            Assert.Throws<ValidationException>(() =>  _eventServiceWithoutMoq.AddGitEvent(_eventBusinessModel));
         }
     }
 }

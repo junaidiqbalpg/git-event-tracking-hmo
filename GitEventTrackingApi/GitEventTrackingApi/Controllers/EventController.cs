@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Threading.Tasks;
 using AutoMapper;
@@ -35,7 +36,7 @@ namespace GitEventTrackingApi.Controllers
 
                 return CreatedAtAction(nameof(AddNewEvent), new { eventId = result.id }, _mapper.Map<EventViewModel>(result));
             }
-            catch (InvalidOperationException e)
+            catch (ValidationException e)
             {
                 return BadRequest(e.Message);
             }

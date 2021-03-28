@@ -1,0 +1,112 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+
+@model GitEventTracking.Web.ViewModel.EventViewModel;
+
+<div class="row">
+    <div class="col-md-12">
+        <main id="main-content" role="main">
+            <h1>Add Git Event</h1>
+            <div>
+                <fieldset>
+                    <legend>
+                        <h2>
+                            Enter Git Event information
+                        </h2>
+                    </legend>
+                    <form method="POST" action="Submit">
+                        <fieldset>
+                            <div>
+                                <label for="eventId">
+                                    Event Id
+                                </label>
+                                @{
+                                    var eventId = Model != null && !string.IsNullOrEmpty(Model.eventId.ToString()) ? Model.eventId.ToString() : "";
+                                }
+
+                                <input type="number" maxlength="15" name="eventId" id="eventId" value="@eventId" />
+                            </div>
+                            <div>
+                                <label for="eventType">
+                                    Event Type
+                                </label>
+                                <select id="eventType" name="eventType" asp-for="@Model.eventType">
+                                    <option value="PushEvent">Push Event</option>
+                                </select>
+                            </div>
+                            <div>
+                                <label for="actorId">
+                                    Actor Id
+                                </label>
+                                @{
+                                    var actorId = Model != null && !string.IsNullOrEmpty(Model.actorId.ToString()) ? Model.actorId.ToString() : "";
+                                }
+                                <input type="number" maxlength="10" name="actorId" id="actorId" value="@actorId" />
+                            </div>
+                            <div>
+                                <label for="actorLogin">
+                                    Actor Login
+                                </label>
+                                @{
+                                    var actorLogin = Model != null && !string.IsNullOrEmpty(Model.actorLogin) ? Model.actorLogin : "";
+                                }
+                                <input type="text" maxlength="100" name="actorLogin" id="actorLogin" value="@actorLogin" />
+                            </div>
+                            <div>
+                                <label for="avatarUrl">
+                                    Avatar Url
+                                </label>
+                                @{
+                                    var avatarUrl = Model != null && !string.IsNullOrEmpty(Model.avatarUrl) ? Model.avatarUrl : "";
+                                }
+                                <input type="text" maxlength="100" name="avatarUrl" id="avatarUrl" value="@avatarUrl" />
+                            </div>
+                            <div>
+                                <label for="repoId">
+                                    Repo Id
+                                </label>
+                                @{
+                                    var reopId = Model != null && !string.IsNullOrEmpty(Model.repoId.ToString()) ? Model.repoId.ToString() : "";
+                                }
+                                <input type="number" maxlength="10" name="repoId" id="repoId" value="@reopId" />
+                            </div>
+                            <div>
+                                <label for="repoName">
+                                    Repo Name
+                                </label>
+                                @{
+                                    var repoName = Model != null && !string.IsNullOrEmpty(Model.repoName) ? Model.repoName : "";
+                                }
+                                <input type="text" maxlength="100" name="repoName" id="repoName" value="@repoName" />
+                            </div>
+                            <div>
+                                <label for="repoLink">
+                                    Repo Link
+                                </label>
+                                @{
+                                    var repoLink = Model != null && !string.IsNullOrEmpty(Model.repoLink) ? Model.repoLink : "";
+                                }
+                                <input type="text" maxlength="100" name="repoLink" id="repoLink" value="@repoLink" />
+                            </div>
+                            <div>
+                                <label for="createdAt">
+                                    Created at
+                                </label>
+                                @{
+                                    var createdAt = Model != null && Model.createdAt != DateTime.MinValue ? Model.createdAt : DateTime.Now;
+                                }
+                                <input type="text" maxlength="100" name="createdAt" id="createdAt" value="@createdAt" />
+                            </div>
+                            <div>
+                                <button type="submit" role="button" id="submit">
+                                    Submit
+                                </button>
+                            </div>
+                        </fieldset>
+                    </form>
+                </fieldset>
+            </div>
+        </main>
+    </div>
+</div>

@@ -1,22 +1,17 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Diagnostics;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using GitEventTracking.Web.Config;
+using GitEventTracking.Web.Models;
+using GitEventTracking.Web.Services;
+using GitEventTrackingApi.Service.BindingModel;
+using GitEventTrackingApi.ViewModel;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
-using GitEventTracking.Web.Models;
-using GitEventTracking.Web.ViewModel;
-using GitEventTrackingApi.Service.BindingModel;
 using Microsoft.Extensions.Options;
-using GitEventTracking.Web.Config;
-using GitEventTracking.Web.Services;
-using static GitEventTracking.Web.Helper.Common;
-using Newtonsoft.Json.Linq;
-using System.ComponentModel.DataAnnotations;
-using System.Net;
-using GitEventTrackingApi.ViewModel;
 using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
+using System.Collections.Generic;
+using System.Diagnostics;
+using System.Net;
+using static GitEventTracking.Web.Helper.Common;
 
 namespace GitEventTracking.Web.Controllers
 {

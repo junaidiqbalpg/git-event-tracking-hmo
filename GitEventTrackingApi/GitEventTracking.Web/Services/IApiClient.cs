@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using static GitEventTracking.Web.Helper.Common;
+﻿using static GitEventTracking.Web.Helper.Common;
 
 namespace GitEventTracking.Web.Services
 {

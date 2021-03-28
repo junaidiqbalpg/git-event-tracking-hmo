@@ -1,9 +1,6 @@
 ﻿using Newtonsoft.Json;
 using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Net;
-using System.Threading.Tasks;
 using static GitEventTracking.Web.Helper.Common;
 
 namespace GitEventTracking.Web.Services
@@ -58,7 +55,7 @@ namespace GitEventTracking.Web.Services
                     var webResponse = (HttpWebResponse)ex.Response;
                     var statusCode = (int)webResponse.StatusCode;
                     var msg = webResponse.StatusDescription;
-                    var error = string.Format("StatusCode: {0}, Message: {1},Exception: {2}", statusCode, msg, ex.Message);
+                    var error = string.Format("StatusCode: {0}, Message: {1}, Exception: {2}", statusCode, msg, ex.Message);
                     throw new WebException(error);
                 }
             }
@@ -90,7 +87,7 @@ namespace GitEventTracking.Web.Services
                     var webResponse = (HttpWebResponse)ex.Response;
                     var statusCode = (int)webResponse.StatusCode;
                     var msg = webResponse.StatusDescription;
-                    var error = string.Format("StatusCode: {0}, Message: {1},Exception: {2}", statusCode, msg, ex.Message);
+                    var error = string.Format("StatusCode: {0}, Message: {1}, Exception: {2}", statusCode, msg, ex.Message);
                     throw new WebException(error);
                 }
             }

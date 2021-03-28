@@ -1,5 +1,3 @@
-using System;
-
 namespace GitEventTracking.Web.Models
 {
     public class ErrorViewModel

@@ -17,6 +17,13 @@ namespace GitEventTracking.Web.ViewModel
         public string repoLink { get; set; }
         public DateTime createdAt { get; set; }
 
-        public string error { get; set; }
+        public string message { get; set; }
+
+        public MaxStreakActorViewModel maxStreakActorViewModel { get; set; }
+
+        public EventViewModel()
+        {
+            maxStreakActorViewModel = new MaxStreakActorViewModel();
+        }
     }
 }

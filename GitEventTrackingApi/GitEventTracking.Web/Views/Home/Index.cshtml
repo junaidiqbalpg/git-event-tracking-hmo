@@ -103,13 +103,37 @@
                                     Submit
                                 </button>
                                 <span>
-                                    @Model.error
+                                    @{ 
+                                        var message = (Model != null) ? Model.message : string.Empty;
+                                    }
+                                    @message
                                 </span>
                             </div>
                         </fieldset>
                     </form>
                 </fieldset>
             </div>
+            <h1>Calculate Maximum Streak Actor</h1>
+            <form method="POST" action="CalculateMaxStreakActor">
+                <div>
+                    @{ 
+                        if (Model.maxStreakActorViewModel != null && Model.maxStreakActorViewModel.actors != null)
+                        {
+                            foreach (var actor in Model.maxStreakActorViewModel.actors)
+                            { 
+                                <div>
+                                    @actor.login
+                                </div>
+                            }
+                        }
+                    }
+                </div>
+                <div>
+                    <button type="submit" role="button" id="calculateMaxStreakActor">
+                        Submit
+                    </button>
+                </div>
+            </form>
         </main>
     </div>
 </div>

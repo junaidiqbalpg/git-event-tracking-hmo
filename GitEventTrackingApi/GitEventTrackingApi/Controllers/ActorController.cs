@@ -30,7 +30,7 @@ namespace GitEventTrackingApi.Controllers
             {
                 var result = _actorService.GetActorsWithMaximumStreak();
                 
-                return Ok(_mapper.Map<List<ActorViewModel>>(result));
+                return Ok(_mapper.Map<List<ActorViewModel>>(_mapper.Map<List<ActorViewModel>>(result)));
             }
             catch (Exception e)
             {

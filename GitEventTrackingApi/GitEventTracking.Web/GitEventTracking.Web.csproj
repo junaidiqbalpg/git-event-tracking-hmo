@@ -10,6 +10,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\GitEventTrackingApi.Service\GitEventTrackingApi.Service.csproj" />
+    <ProjectReference Include="..\GitEventTrackingApi\GitEventTrackingApi.csproj" />
   </ItemGroup>
 
 

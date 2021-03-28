@@ -15,6 +15,8 @@ using static GitEventTracking.Web.Helper.Common;
 using Newtonsoft.Json.Linq;
 using System.ComponentModel.DataAnnotations;
 using System.Net;
+using GitEventTrackingApi.ViewModel;
+using Newtonsoft.Json;
 
 namespace GitEventTracking.Web.Controllers
 {
@@ -31,14 +33,14 @@ namespace GitEventTracking.Web.Controllers
             _apiClient = apiClient;
         }
 
-        public IActionResult Index(EventViewModel eventViewModel)
+        public IActionResult Index(ViewModel.EventViewModel eventViewModel)
         {
             return View(eventViewModel);
         }
 
         [HttpPost]
         [Route("Submit")]
-        public IActionResult Submit(EventViewModel eventViewModel)
+        public IActionResult Submit(ViewModel.EventViewModel eventViewModel)
         {
             if (ModelState.IsValid)
             {
@@ -70,17 +72,41 @@ namespace GitEventTracking.Web.Controllers
 
                     JObject result = JObject.Parse(response);
 
-                    eventViewModel.error = string.Empty;
+                    eventViewModel.message = "Event added successfully!!!";
                 }
                 catch(WebException e)
                 {
-                    eventViewModel.error = e.Message + Environment.NewLine + string.Format("Event id {0} already exists in database.", eventViewModel.eventId);
+                    eventViewModel.message = e.Message + Environment.NewLine + string.Format("Event id {0} already exists in database.", eventViewModel.eventId);
                 }
 
             }
             return View("Index", eventViewModel);
         }
 
+        [HttpPost]
+        [Route("CalculateMaxStreakActor")]
+        public IActionResult CalculateMaxStreakActor()
+        {
+            ViewModel.EventViewModel eventViewModel = new ViewModel.EventViewModel();
+            string url = string.Format("{0}Actor/streak", _appSettings.APIUrl);
+
+            string response = string.Empty;
+
+            try
+            {
+                response = _apiClient.InvokeApi(ApiMethods.GET, url);
+
+                List<ActorViewModel> actors = JsonConvert.DeserializeObject<List<ActorViewModel>>(response);
+
+                eventViewModel.maxStreakActorViewModel.actors = actors;
+            }
+            catch (WebException e)
+            {
+                eventViewModel.message = e.Message;
+            }
+
+            return View("Index", eventViewModel);
+        }
         public IActionResult Privacy()
         {
             return View();

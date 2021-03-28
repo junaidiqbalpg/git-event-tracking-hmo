@@ -14,6 +14,8 @@ namespace GitEventTrackingApi.MappingConfigurations
             CreateMap<Actor, ActorBusinessModel> ();
 
             CreateMap<ActorBusinessModel, ActorViewModel>();
+
+            CreateMap<ActorViewModel, ActorBusinessModel>();
         }
     }
 }

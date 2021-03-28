@@ -76,7 +76,7 @@ namespace GitEventTracking.Web.Controllers
                 }
                 catch(WebException e)
                 {
-                    eventViewModel.message = e.Message + Environment.NewLine + string.Format("Event id {0} already exists in database.", eventViewModel.eventId);
+                    eventViewModel.message = e.Message;
                 }
 
             }

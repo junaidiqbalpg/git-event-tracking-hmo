@@ -10,10 +10,8 @@ namespace GitEventTracking.Web.Services
 {
     public class ApiClient : IApiClient
     {
-        private readonly string Token;
         public ApiClient()
-        {
-        }
+        { }
 
         public string InvokeApi(ApiMethods method, string url, object content = null)
         {
@@ -39,6 +37,8 @@ namespace GitEventTracking.Web.Services
         private string InvokePost(ApiMethods method, string url, object content)
         {
             string jsonResponse = string.Empty;
+            string apiToken = GetAppSettingValue("AppSettings:ApiKey");
+
             using (var client = new WebClient())
             {
                 try
@@ -46,8 +46,7 @@ namespace GitEventTracking.Web.Services
                     client.UseDefaultCredentials = true;
                     client.Headers.Add("Content-Type:application/json");
                     client.Headers.Add("Accept:application/json");
-                    //client.Headers.Add(HttpRequestHeader.Authorization,
-                    //     "Bearer " + Token);
+                    client.Headers.Add("ApiKey", apiToken);
 
                     var uri = new Uri(url);
                     var requestContent = JsonConvert.SerializeObject(content);
@@ -70,6 +69,8 @@ namespace GitEventTracking.Web.Services
         private string InvokeGet(string url)
         {
             string jsonResponse = string.Empty;
+            string apiToken = GetAppSettingValue("AppSettings:ApiKey");
+
             using (var client = new WebClient())
             {
                 try
@@ -77,8 +78,7 @@ namespace GitEventTracking.Web.Services
                     client.UseDefaultCredentials = true;
                     client.Headers.Add("Content-Type:application/json");
                     client.Headers.Add("Accept:application/json");
-                    //client.Headers.Add(HttpRequestHeader.Authorization,
-                    //     "Bearer " + Token);
+                    client.Headers.Add("ApiKey", apiToken);
 
                     var uri = new Uri(url);
 

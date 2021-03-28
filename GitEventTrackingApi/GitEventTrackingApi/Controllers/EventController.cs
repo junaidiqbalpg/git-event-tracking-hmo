@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using GitEventTrackingApi.Filters;
 using GitEventTrackingApi.Service.BindingModel;
 using GitEventTrackingApi.Service.BusinessModel;
 using GitEventTrackingApi.Service.Services;
@@ -9,6 +10,7 @@ using System.ComponentModel.DataAnnotations;
 
 namespace GitEventTrackingApi.Controllers
 {
+    [ApiKeyAuth]
     [Route("api/[controller]")]
     [ApiController]
     public class EventController : ControllerBase

@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using GitEventTrackingApi.Filters;
 using GitEventTrackingApi.Service.Services;
 using GitEventTrackingApi.ViewModel;
 using Microsoft.AspNetCore.Http;
@@ -8,6 +9,7 @@ using System.Collections.Generic;
 
 namespace GitEventTrackingApi.Controllers
 {
+    [ApiKeyAuth]
     [Route("api/[controller]")]
     [ApiController]
     public class ActorController : ControllerBase

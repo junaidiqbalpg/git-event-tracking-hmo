@@ -13,7 +13,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GitEventTrackingApi.Service
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GitEventTracking.Web", "GitEventTracking.Web\GitEventTracking.Web.csproj", "{D4EB69D8-CAB8-4CD9-9297-96E0A8050332}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GitEventTracking.Web.IntegrationTest", "GitEventTracking.Web.IntegrationTest\GitEventTracking.Web.IntegrationTest.csproj", "{6214A3BB-8F43-4242-9FB9-6C7EC4E310F3}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GitEventTracking.Web.IntegrationTest", "GitEventTracking.Web.IntegrationTest\GitEventTracking.Web.IntegrationTest.csproj", "{3C9A5A3C-9D73-4A3F-BA5F-DF4D06F341EC}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -41,10 +41,10 @@ Global
 		{D4EB69D8-CAB8-4CD9-9297-96E0A8050332}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D4EB69D8-CAB8-4CD9-9297-96E0A8050332}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D4EB69D8-CAB8-4CD9-9297-96E0A8050332}.Release|Any CPU.Build.0 = Release|Any CPU
-		{6214A3BB-8F43-4242-9FB9-6C7EC4E310F3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{6214A3BB-8F43-4242-9FB9-6C7EC4E310F3}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{6214A3BB-8F43-4242-9FB9-6C7EC4E310F3}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{6214A3BB-8F43-4242-9FB9-6C7EC4E310F3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3C9A5A3C-9D73-4A3F-BA5F-DF4D06F341EC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3C9A5A3C-9D73-4A3F-BA5F-DF4D06F341EC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3C9A5A3C-9D73-4A3F-BA5F-DF4D06F341EC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3C9A5A3C-9D73-4A3F-BA5F-DF4D06F341EC}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

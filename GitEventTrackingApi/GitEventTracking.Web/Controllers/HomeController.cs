@@ -40,17 +40,17 @@ namespace GitEventTracking.Web.Controllers
             if (ModelState.IsValid)
             {
                 EventBindingModel eventBindingModel = new EventBindingModel();
-                eventBindingModel.id = eventViewModel.eventId;
+                eventBindingModel.id = int.Parse(eventViewModel.eventId);
                 eventBindingModel.type = eventViewModel.eventType;
 
                 GitEventTrackingApi.Data.Domain.Actor actor = new GitEventTrackingApi.Data.Domain.Actor();
-                actor.id = eventViewModel.actorId;
+                actor.id = int.Parse(eventViewModel.actorId);
                 actor.login = eventViewModel.actorLogin;
                 actor.avatar_url = eventViewModel.avatarUrl;
                 eventBindingModel.actor = actor;
 
                 GitEventTrackingApi.Data.Domain.Repo repo = new GitEventTrackingApi.Data.Domain.Repo();
-                repo.id = eventViewModel.repoId;
+                repo.id = int.Parse(eventViewModel.repoId);
                 repo.name = eventViewModel.repoName;
                 repo.url = eventViewModel.repoLink;
                 eventBindingModel.repo = repo;

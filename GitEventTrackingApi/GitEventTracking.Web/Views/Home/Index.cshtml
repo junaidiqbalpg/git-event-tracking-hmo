@@ -22,7 +22,7 @@
                                     Event Id
                                 </label>
                                 @{
-                                    var eventId = Model != null && !string.IsNullOrEmpty(Model.eventId.ToString()) ? Model.eventId.ToString() : "";
+                                    var eventId = Model != null && !string.IsNullOrEmpty(Model.eventId) ? Model.eventId : "";
                                 }
 
                                 <input type="number" maxlength="15" name="eventId" id="eventId" value="@eventId" />
@@ -40,7 +40,7 @@
                                     Actor Id
                                 </label>
                                 @{
-                                    var actorId = Model != null && !string.IsNullOrEmpty(Model.actorId.ToString()) ? Model.actorId.ToString() : "";
+                                    var actorId = Model != null && !string.IsNullOrEmpty(Model.actorId) ? Model.actorId : "";
                                 }
                                 <input type="number" maxlength="10" name="actorId" id="actorId" value="@actorId" />
                             </div>
@@ -67,7 +67,7 @@
                                     Repo Id
                                 </label>
                                 @{
-                                    var reopId = Model != null && !string.IsNullOrEmpty(Model.repoId.ToString()) ? Model.repoId.ToString() : "";
+                                    var reopId = Model != null && !string.IsNullOrEmpty(Model.repoId) ? Model.repoId : "";
                                 }
                                 <input type="number" maxlength="10" name="repoId" id="repoId" value="@reopId" />
                             </div>
@@ -132,7 +132,7 @@
                 </div>
                 <div>
                     <button type="submit" role="button" id="calculateMaxStreakActor">
-                        Submit
+                        Find
                     </button>
                 </div>
             </form>

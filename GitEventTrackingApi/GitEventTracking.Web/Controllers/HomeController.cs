@@ -8,16 +8,20 @@ using Microsoft.Extensions.Logging;
 using GitEventTracking.Web.Models;
 using GitEventTracking.Web.ViewModel;
 using GitEventTrackingApi.Service.BindingModel;
+using Microsoft.Extensions.Options;
+using GitEventTracking.Web.Config;
 
 namespace GitEventTracking.Web.Controllers
 {
     public class HomeController : Controller
     {
         private readonly ILogger<HomeController> _logger;
+        private readonly AppSettings _appSettings;
 
-        public HomeController(ILogger<HomeController> logger)
+        public HomeController(ILogger<HomeController> logger, IOptions<AppSettings> appSettings)
         {
             _logger = logger;
+            _appSettings = appSettings.Value;
         }
 
         public IActionResult Index()

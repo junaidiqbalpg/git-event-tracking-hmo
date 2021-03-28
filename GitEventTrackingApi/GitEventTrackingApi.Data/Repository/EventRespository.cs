@@ -23,7 +23,18 @@ namespace GitEventTrackingApi.Data.Repository
             try
             {
                  _context.Event.Add(_event);
-                 _context.SaveChanges();
+                 
+                 if (_context.Actor.Any(a => a.id == _event.actor.id))
+                 {
+                     _context.Entry(_event.actor).State = EntityState.Unchanged;
+                 }
+
+                 if (_context.Repo.Any(a => a.id == _event.repo.id))
+                 {
+                     _context.Entry(_event.repo).State = EntityState.Unchanged;
+                 }
+
+                _context.SaveChanges();
                 return _event;
             }
             catch (InvalidOperationException e)

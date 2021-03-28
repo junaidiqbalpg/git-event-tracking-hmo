@@ -16,5 +16,7 @@ namespace GitEventTracking.Web.ViewModel
         public string repoName { get; set; }
         public string repoLink { get; set; }
         public DateTime createdAt { get; set; }
+
+        public string error { get; set; }
     }
 }

@@ -10,6 +10,11 @@ using GitEventTracking.Web.ViewModel;
 using GitEventTrackingApi.Service.BindingModel;
 using Microsoft.Extensions.Options;
 using GitEventTracking.Web.Config;
+using GitEventTracking.Web.Services;
+using static GitEventTracking.Web.Helper.Common;
+using Newtonsoft.Json.Linq;
+using System.ComponentModel.DataAnnotations;
+using System.Net;
 
 namespace GitEventTracking.Web.Controllers
 {
@@ -17,16 +22,18 @@ namespace GitEventTracking.Web.Controllers
     {
         private readonly ILogger<HomeController> _logger;
         private readonly AppSettings _appSettings;
+        private readonly IApiClient _apiClient;
 
-        public HomeController(ILogger<HomeController> logger, IOptions<AppSettings> appSettings)
+        public HomeController(ILogger<HomeController> logger, IOptions<AppSettings> appSettings, IApiClient apiClient)
         {
             _logger = logger;
             _appSettings = appSettings.Value;
+            _apiClient = apiClient;
         }
 
-        public IActionResult Index()
+        public IActionResult Index(EventViewModel eventViewModel)
         {
-            return View();
+            return View(eventViewModel);
         }
 
         [HttpPost]
@@ -48,10 +55,27 @@ namespace GitEventTracking.Web.Controllers
                 GitEventTrackingApi.Data.Domain.Repo repo = new GitEventTrackingApi.Data.Domain.Repo();
                 repo.id = eventViewModel.repoId;
                 repo.name = eventViewModel.repoName;
-                repo.url = eventViewModel.avatarUrl;
+                repo.url = eventViewModel.repoLink;
                 eventBindingModel.repo = repo;
 
                 eventBindingModel.created_at = eventViewModel.createdAt;
+
+                string url = string.Format("{0}Event", _appSettings.APIUrl);
+
+                string response = string.Empty;
+
+                try
+                {
+                    response = _apiClient.InvokeApi(ApiMethods.POST, url, eventBindingModel);
+
+                    JObject result = JObject.Parse(response);
+
+                    eventViewModel.error = string.Empty;
+                }
+                catch(WebException e)
+                {
+                    eventViewModel.error = e.Message + Environment.NewLine + string.Format("Event id {0} already exists in database.", eventViewModel.eventId);
+                }
 
             }
             return View("Index", eventViewModel);
